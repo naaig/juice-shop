@@ -1,0 +1,38 @@
+name: "ZAP DAST Scan - Local Docker Juice Shop"
+
+on:
+  push:
+    branches: [ "main", "master" ]      # chỉnh theo branch chính của bạn
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  zap_scan:
+    runs-on: ubuntu-latest
+    name: Scan local Docker instance of Juice Shop
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v4
+
+      - name: Start Juice Shop with Docker
+        run: |
+          docker run -d --name juice-shop -p 3000:3000 bkimminich/juice-shop
+          echo "Waiting for Juice Shop to be ready..."
+          sleep 40
+          docker ps
+
+      # Dùng ZAP baseline action, target là instance local
+      - name: ZAP Baseline Scan
+        uses: zaproxy/action-baseline@v0.14.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          target: 'http://localhost:3000'
+          # nếu muốn tái dùng rules sẵn có:
+          rules_file_name: '.zap/rules.tsv'
+          cmd_options: '-a -j'
+
+      - name: Stop Juice Shop container
+        if: always()
+        run: |
+          docker stop juice-shop || true
