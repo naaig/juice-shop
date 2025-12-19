@@ -36,14 +36,14 @@ jobs:
           # rules_file_name: '.zap/rules.tsv'
           # cmd_options: '-a -j'
       # 3. Upload report
-      - name: Prepare report folder
-        run: mkdir -p reports
+    
 
       - name: Run ZAP automation plan
         run: |
           docker run \
             --rm \
             -v ${{ github.workspace }}:/zap/wrk/:rw \
+            -v ${{ github.workspace }}/zap-headers.conf:/home/zap/.ZAP/settings.conf:ro \
             --network=host \
             ghcr.io/zaproxy/zaproxy:stable \
             zap.sh -cmd -autorun /zap/wrk/zap-auth-plan.yaml
@@ -51,7 +51,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: zap-full-scan-report
-          path: reports/report.html
+          path: report.html
 
       - name: Stop Juice Shop container
         if: always()
