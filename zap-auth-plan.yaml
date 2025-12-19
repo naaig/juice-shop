@@ -30,14 +30,14 @@ jobs:
     name: "Spider as authenticated user"
     parameters:
       context: "juice-shop-auth"
-      user: "admin"
+      #user: "admin"
       url: "http://localhost:3000/#/"
       maxDuration: 2
   - type: "activeScan"
     name: "Active Scan as authenticated user"
     parameters:
       context: "juice-shop-auth"
-      user: "admin"
+      #user: "admin"
       policy: "Default Policy"
       maxScanDurationInMins: 10
 
