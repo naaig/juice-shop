@@ -5,21 +5,25 @@ env:
         - "http://localhost:3000/"
       includePaths:
         - "http://localhost:3000.*"
-      authentication:
-        method: "formBasedAuthentication"
-        parameters:
-          loginUrl: "http://localhost:3000/rest/user/login"
-          loginRequestBody: '{"email":"{%username%}","password":"{%password%}"}'
-          loginPageUrl: "http://localhost:3000/#/login"
-          loginRequestHeader: "Content-Type: application/json"
-        verification:
-          method: "response"
-          loggedInRegex: "authentication"
-          loggedOutRegex: "Invalid email"
-      users:
-        - name: "admin"
-          username: "zaptest@gmail.com"
-          password: "Quang1998"
+      httpHeaders:
+        - name: "Authorization"
+          value: "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdGF0dXMiOiJzdWNjZXNzIiwiZGF0YSI6eyJpZCI6MjMsInVzZXJuYW1lIjoiIiwiZW1haWwiOiJ6YXB0ZXN0QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiYjE3ZTZlMGMyNGQ3YjczNjNmNWY4MTY2ZjJkYWZjMDgiLCJyb2xlIjoiY3VzdG9tZXIiLCJkZWx1eGVUb2tlbiI6IiIsImxhc3RMb2dpbklwIjoiIiwicHJvZmlsZUltYWdlIjoiL2Fzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdC5zdmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjUtMTItMTkgMDY6MzU6NTYuMTIyICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMjUtMTItMTkgMDY6MzY6NDYuMTI4ICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImlhdCI6MTc2NjEyNjMyNn0.qt17xVkgvNCybyl8UJmOID57UqYraVYzMHnbuFwbU74NaI19LAzjG163ArRWvWku0dUafB9z-_0bkqZ8se0Ov-NbtlinBq3DhxAzgBIoOB5mU94-8JFzEYUOJPHOpXLWSGL4hpVwIBfLsjwwAwqcwVXygseFyww4SY6WzxV0bBQ"
+          enabled: true
+      #authentication:
+        #method: "formBasedAuthentication"
+        #parameters:
+         # loginUrl: "http://localhost:3000/rest/user/login"
+          #loginRequestBody: '{"email":"{%username%}","password":"{%password%}"}'
+          #loginPageUrl: "http://localhost:3000/#/login"
+          #loginRequestHeader: "Content-Type: application/json"
+        #verification:
+         # method: "response"
+          #loggedInRegex: "authentication"
+          #loggedOutRegex: "Invalid email"
+      #users:
+       # - name: "admin"
+        #  username: "zaptest@gmail.com"
+         # password: "Quang1998"
 
 jobs:
   - type: "spider"
