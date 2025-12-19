@@ -33,7 +33,7 @@ jobs:
           fail_action: false
           allow_issue_writing: false
           # nếu muốn tái dùng rules sẵn có:
-          rules_file_name: '.zap/rules.tsv'
+          # rules_file_name: '.zap/rules.tsv'
           # cmd_options: '-a -j'
       # 3. Upload report
       - name: Upload ZAP report

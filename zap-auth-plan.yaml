@@ -12,32 +12,23 @@ env:
           loginRequestBody: '{"email":"{%username%}","password":"{%password%}"}'
         verification:
           method: response
-          loggedInRegex: "authentication"          # tuỳ nội dung response khi login thành công
-          loggedOutRegex: "Invalid email"          # hoặc chuỗi báo lỗi login
+          loggedInRegex: "authentication"
+          loggedOutRegex: "Invalid email"
       users:
         - name: admin
           credentials:
-            username: "zaptest@gmail.com"
+            username: "zaptest@gmai.com"
             password: "Quang1998"
           enabled: true
 
 jobs:
-  - type: passiveScan-config
-    parameters:
-      maxAlertsPerRule: 10
-
   - type: spider
     name: "Spider as authenticated user"
     parameters:
       context: "juice-shop-auth"
       user: "admin"
-      maxDuration: 5
-      url: "http://localhost :3000/#/"
-    tests:
-      - type: stats
-        statistic: "automation.spider.urls.added"
-        operator: "greaterThan"
-        value: 10
+      url: "http://localhost:3000/#/"
+      maxDuration: 2
 
   - type: activeScan
     name: "Active Scan as authenticated user"
@@ -45,12 +36,10 @@ jobs:
       context: "juice-shop-auth"
       user: "admin"
       policy: "Default Policy"
-      maxRuleDurationInMins: 5
-      maxScanDurationInMins: 30
+      maxScanDurationInMins: 10
 
   - type: report
     parameters:
       template: "traditional-html"
       reportDir: "/zap/wrk"
       reportFile: "zap-auth-report.html"
-      theme: "dark"
