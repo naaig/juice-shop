@@ -6,23 +6,23 @@ env:
       includePaths:
         - "http://localhost:3000.*"
       authentication:
-        method: jsonBasedAuthentication
+        method: "JSON-based authentication"
         parameters:
           loginUrl: "http://localhost:3000/rest/user/login"
           loginRequestBody: '{"email":"{%username%}","password":"{%password%}"}'
+          loginPageUrl: "http://localhost:3000/#/login"
+          loginRequestHeader: "Content-Type: application/json"
         verification:
-          method: response
+          method: "response"
           loggedInRegex: "authentication"
           loggedOutRegex: "Invalid email"
       users:
-        - name: admin
-          credentials:
-            username: "zaptest@gmail.com"
-            password: "Quang1998"
-          enabled: true
+        - name: "admin"
+          username: "zaptest@gmail.com"
+          password: "Quang1998"
 
 jobs:
-  - type: spider
+  - type: "spider"
     name: "Spider as authenticated user"
     parameters:
       context: "juice-shop-auth"
@@ -30,7 +30,7 @@ jobs:
       url: "http://localhost:3000/#/"
       maxDuration: 2
 
-  - type: activeScan
+  - type: "activeScan"
     name: "Active Scan as authenticated user"
     parameters:
       context: "juice-shop-auth"
@@ -38,7 +38,7 @@ jobs:
       policy: "Default Policy"
       maxScanDurationInMins: 10
 
-  - type: report
+  - type: "report"
     parameters:
       template: "traditional-html"
       reportDir: "/zap/wrk"
