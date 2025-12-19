@@ -22,7 +22,7 @@ jobs:
           sleep 40
           docker ps
 
-      # Dùng ZAP fullscan action, target là instance local
+      
       #- name: ZAP Full Scan
        # uses: zaproxy/action-full-scan@v0.13.0
        # with:
@@ -36,6 +36,9 @@ jobs:
           # rules_file_name: '.zap/rules.tsv'
           # cmd_options: '-a -j'
       # 3. Upload report
+      - name: Prepare report folder
+        run: mkdir -p reports
+
       - name: Run ZAP automation plan
         run: |
           docker run \
@@ -48,7 +51,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: zap-full-scan-report
-          path: report.html
+          path: reports/report.html
 
       - name: Stop Juice Shop container
         if: always()
