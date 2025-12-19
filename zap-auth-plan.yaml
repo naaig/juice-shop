@@ -49,7 +49,8 @@ jobs:
       maxScanDurationInMins: 10
 
   - type: "report"
+    name: "Report"
     parameters:
       template: "traditional-html"
       reportDir: "/zap/wrk"
-      reportFile: "zap-auth-report.html"
+      reportFile: "report.html"
