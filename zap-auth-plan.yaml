@@ -17,7 +17,7 @@ env:
       users:
         - name: admin
           credentials:
-            username: "zaptest@gmai.com"
+            username: "zaptest@gmail.com"
             password: "Quang1998"
           enabled: true
 
