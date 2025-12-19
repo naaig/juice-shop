@@ -29,7 +29,6 @@ jobs:
       user: "admin"
       url: "http://localhost:3000/#/"
       maxDuration: 2
-S
   - type: "activeScan"
     name: "Active Scan as authenticated user"
     parameters:
