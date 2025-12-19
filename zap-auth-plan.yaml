@@ -6,7 +6,7 @@ env:
       includePaths:
         - "http://localhost:3000.*"
       authentication:
-        method: "JSON-based authentication"
+        method: "JSON based authentication"
         parameters:
           loginUrl: "http://localhost:3000/rest/user/login"
           loginRequestBody: '{"email":"{%username%}","password":"{%password%}"}'
@@ -29,7 +29,7 @@ jobs:
       user: "admin"
       url: "http://localhost:3000/#/"
       maxDuration: 2
-
+S
   - type: "activeScan"
     name: "Active Scan as authenticated user"
     parameters:
