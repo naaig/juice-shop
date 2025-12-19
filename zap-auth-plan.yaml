@@ -6,7 +6,7 @@ env:
       includePaths:
         - "http://localhost:3000.*"
       authentication:
-        method: "JSON based authentication"
+        method: "formBasedAuthentication"
         parameters:
           loginUrl: "http://localhost:3000/rest/user/login"
           loginRequestBody: '{"email":"{%username%}","password":"{%password%}"}'
