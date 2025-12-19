@@ -49,7 +49,7 @@ jobs:
       maxScanDurationInMins: 10
 
   - type: "report"
-    name: "Report"
+    name: "zap-full-scan-report"
     parameters:
       template: "traditional-html"
       reportDir: "/zap/wrk"
