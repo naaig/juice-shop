@@ -22,15 +22,24 @@ jobs:
           sleep 40
           docker ps
 
-      # Dùng ZAP baseline action, target là instance local
+      # Dùng ZAP fullscan action, target là instance local
       - name: ZAP Baseline Scan
-        uses: zaproxy/action-baseline@v0.14.0
+        uses: zaproxy/action-full-scan@v0.8.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           target: 'http://localhost:3000'
+          cmd_options: '-a'
+          fail_action: false
+          allow_issue_writing: false
           # nếu muốn tái dùng rules sẵn có:
           rules_file_name: '.zap/rules.tsv'
-          cmd_options: '-a -j'
+          # cmd_options: '-a -j'
+      # 3. Upload report
+      - name: Upload ZAP report
+        uses: actions/upload-artifact@v4
+        with:
+          name: zap-full-scan-report
+          path: report.html
 
       - name: Stop Juice Shop container
         if: always()
