@@ -1,0 +1,56 @@
+env:
+  contexts:
+    - name: juice-shop-auth
+      urls:
+        - "http://localhost:3000/"
+      includePaths:
+        - "http://localhost:3000.*"
+      authentication:
+        method: jsonBasedAuthentication
+        parameters:
+          loginUrl: "http://localhost:3000/rest/user/login"
+          loginRequestBody: '{"email":"{%username%}","password":"{%password%}"}'
+        verification:
+          method: response
+          loggedInRegex: "authentication"          # tuỳ nội dung response khi login thành công
+          loggedOutRegex: "Invalid email"          # hoặc chuỗi báo lỗi login
+      users:
+        - name: admin
+          credentials:
+            username: "zaptest@gmail.com"
+            password: "Quang1998"
+          enabled: true
+
+jobs:
+  - type: passiveScan-config
+    parameters:
+      maxAlertsPerRule: 10
+
+  - type: spider
+    name: "Spider as authenticated user"
+    parameters:
+      context: "juice-shop-auth"
+      user: "admin"
+      maxDuration: 5
+      url: "http://localhost :3000/#/"
+    tests:
+      - type: stats
+        statistic: "automation.spider.urls.added"
+        operator: "greaterThan"
+        value: 10
+
+  - type: activeScan
+    name: "Active Scan as authenticated user"
+    parameters:
+      context: "juice-shop-auth"
+      user: "admin"
+      policy: "Default Policy"
+      maxRuleDurationInMins: 5
+      maxScanDurationInMins: 30
+
+  - type: report
+    parameters:
+      template: "traditional-html"
+      reportDir: "/zap/wrk"
+      reportFile: "zap-auth-report.html"
+      theme: "dark"
