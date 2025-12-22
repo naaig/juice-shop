@@ -5,7 +5,7 @@ from pathlib import Path
 ROOT = Path(__file__).parent
 RULES_FILE = ROOT / ".zap" / "rules.tsv"
 # tuỳ tên file JSON thực tế ZAP tạo:
-REPORT_FILE = ROOT / "report.json"  # nếu khác bạn sửa lại
+REPORT_FILE = ROOT / "report_json.json"  # nếu khác bạn sửa lại
 
 def load_rules(path: Path):
     rules = {}
