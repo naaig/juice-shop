@@ -34,7 +34,7 @@ jobs:
            #nếu muốn tái dùng rules sẵn có:
           rules_file_name: '.zap/rules.tsv'
           cmd_options: >
-              -a -j
+              -a -j -J report.json -W report.html
               -z "
               -config connection.httpHeaders.enabled=true
               -config connection.httpHeaders.numHeaders=1
