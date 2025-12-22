@@ -2,6 +2,7 @@
 import json
 from pathlib import Path
 
+ROOT = Path(__file__).parent
 RULES_FILE = ROOT / ".zap" / "rules.tsv"
 # tuỳ tên file JSON thực tế ZAP tạo:
 REPORT_FILE = Path("report_json.json")  # nếu khác bạn sửa lại
