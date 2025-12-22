@@ -1,19 +1,326 @@
-10109	IGNORE	(Modern Web Application)
-10035	IGNORE	(Strict-Transport-Security Header Not Set)
-10098	IGNORE	(Cross-Domain Misconfiguration)
-10017	IGNORE	(Cross-Domain JavaScript Source File Inclusion)
-10096	IGNORE	(Timestamp Disclosure - Unix)
-10015	IGNORE	(Incomplete or No Cache-control and Pragma HTTP Header Set)
-10038	IGNORE	(Content Security Policy (CSP) Header Not Set)
-10099	IGNORE	(Source Code Disclosure - Java)
-10027	IGNORE	(Information Disclosure - Suspicious Comments)
-10094	IGNORE	(Base64 Disclosure)
-10063	IGNORE	(Feature Policy Header Not Set)
-10049	IGNORE	(Storable but Non-Cacheable Content)
-10049	IGNORE	(Non-Storable Content)
-10110	IGNORE	(Dangerous JS Functions)
-90004	IGNORE	(Insufficient Site Isolation Against Spectre Vulnerability)
-90005	IGNORE	(Sec-Fetch-Dest Header is Missing)
-90005	IGNORE	(Sec-Fetch-Mode Header is Missing)
-90005	IGNORE	(Sec-Fetch-Site Header is Missing)
-90005	IGNORE	(Sec-Fetch-User Header is Missing)
+# Generated from https://www.zaproxy.org/docs/alerts/
+# ruleId	threshold	risk	# name
+6-1	FAIL	HIGH	# Path Traversal
+6-2	FAIL	HIGH	# Path Traversal
+6-3	FAIL	HIGH	# Path Traversal
+6-4	FAIL	HIGH	# Path Traversal
+6-5	FAIL	HIGH	# Path Traversal
+7	FAIL	HIGH	# Remote File Inclusion
+41	FAIL	HIGH	# Source Code Disclosure - Git
+43	FAIL	HIGH	# Source Code Disclosure - File Inclusion
+10028	FAIL	HIGH	# Off-site Redirect
+10032-4	FAIL	HIGH	# Viewstate without MAC Signature (Unsure)
+10032-5	FAIL	HIGH	# Viewstate without MAC Signature (Sure)
+10034	FAIL	HIGH	# Heartbleed OpenSSL Vulnerability (Indicative)
+10045-1	FAIL	HIGH	# Source Code Disclosure - /WEB-INF Folder
+10045-2	FAIL	HIGH	# Properties File Disclosure - /WEB-INF folder
+10048-1	FAIL	HIGH	# Remote Code Execution - Shell Shock
+10048-2	FAIL	HIGH	# Remote Code Execution - Shell Shock
+10062	FAIL	HIGH	# PII Disclosure
+10094-2	FAIL	HIGH	# ASP.NET ViewState Integrity
+10101	FAIL	HIGH	# Access Control Issue - Improper Authentication
+10102	FAIL	HIGH	# Access Control Issue - Improper Authorization
+10107	FAIL	HIGH	# Httpoxy - Proxy Header Misuse
+10115-1	FAIL	HIGH	# Script Served From Malicious Domain (polyfill)
+10115-2	FAIL	HIGH	# Script Served From Malicious Domain (polyfill)
+20015	FAIL	HIGH	# Heartbleed OpenSSL Vulnerability
+20016-1	FAIL	HIGH	# Cross-Domain Misconfiguration - Adobe - Read
+20016-2	FAIL	HIGH	# Cross-Domain Misconfiguration - Adobe - Send
+20016-3	FAIL	HIGH	# Cross-Domain Misconfiguration - Silverlight
+20017	FAIL	HIGH	# Source Code Disclosure - CVE-2012-1823
+20018	FAIL	HIGH	# Remote Code Execution - CVE-2012-1823
+20019-1	FAIL	HIGH	# External Redirect
+20019-2	FAIL	HIGH	# External Redirect
+20019-3	FAIL	HIGH	# External Redirect
+20019-4	FAIL	HIGH	# External Redirect
+40009	FAIL	HIGH	# Server Side Include
+40012	FAIL	HIGH	# Cross Site Scripting (Reflected)
+40013	FAIL	HIGH	# Session Fixation
+40014	FAIL	HIGH	# Cross Site Scripting (Persistent)
+40015	FAIL	HIGH	# LDAP Injection
+40018	FAIL	HIGH	# SQL Injection
+40019	FAIL	HIGH	# SQL Injection - MySQL (Time Based)
+40020	FAIL	HIGH	# SQL Injection - Hypersonic SQL (Time Based)
+40021	FAIL	HIGH	# SQL Injection - Oracle (Time Based)
+40022	FAIL	HIGH	# SQL Injection - PostgreSQL (Time Based)
+40024	FAIL	HIGH	# SQL Injection - SQLite (Time Based)
+40026	FAIL	HIGH	# Cross Site Scripting (DOM Based)
+40027	FAIL	HIGH	# SQL Injection - MsSQL (Time Based)
+40031	FAIL	HIGH	# Out of Band XSS
+40033	FAIL	HIGH	# NoSQL Injection - MongoDB
+40040-3	FAIL	HIGH	# CORS Misconfiguration
+40043-1	FAIL	HIGH	# Log4Shell (CVE-2021-44228)
+40043-2	FAIL	HIGH	# Log4Shell (CVE-2021-45046)
+40045	FAIL	HIGH	# Spring4Shell
+40046	FAIL	HIGH	# Server Side Request Forgery
+40047	FAIL	HIGH	# Text4shell (CVE-2022-42889)
+40048	FAIL	HIGH	# Remote Code Execution (React2Shell)
+40101	FAIL	HIGH	# Cross-site Scripting
+40102	FAIL	HIGH	# Cross-site Scripting
+40103	FAIL	HIGH	# Cross Site Request Forgery
+90018	FAIL	HIGH	# Advanced SQL Injection
+90019-1	FAIL	HIGH	# Server Side Code Injection - PHP Code Injection
+90019-2	FAIL	HIGH	# Server Side Code Injection - ASP Code Injection
+90020	FAIL	HIGH	# Remote OS Command Injection
+90021	FAIL	HIGH	# XPath Injection
+90023	FAIL	HIGH	# XML External Entity Attack
+90024	FAIL	HIGH	# Generic Padding Oracle
+90025	FAIL	HIGH	# Expression Language Injection
+90026	FAIL	HIGH	# SOAP Action Spoofing
+90029	FAIL	HIGH	# SOAP XML Injection
+90034	FAIL	HIGH	# Cloud Metadata Potentially Exposed
+90035	FAIL	HIGH	# Server Side Template Injection
+90036	FAIL	HIGH	# Server Side Template Injection (Blind)
+90037	FAIL	HIGH	# Remote OS Command Injection (Time Based)
+90039	FAIL	HIGH	# NoSQL Injection - MongoDB (Time Based)
+100008	FAIL	HIGH	# Information Disclosure - Credit Card Number
+100020	FAIL	HIGH	# Information Disclosure - SQL Error
+100021	FAIL	HIGH	# Telerik UI for ASP.NET AJAX Cryptographic Weakness (CVE-2017-9248)
+100025	FAIL	HIGH	# Cross-Site WebSocket Hijacking
+100026	FAIL	HIGH	# JWT None Exploit
+100029	FAIL	HIGH	# File Content Disclosure (CVE-2019-5418)
+100044-1	FAIL	HIGH	# Suspicious Input Transformation - Quote Consumption
+100044-2	FAIL	HIGH	# Suspicious Input Transformation - Arithmetic Evaluation
+100044-3	FAIL	HIGH	# Suspicious Input Transformation - Expression Evaluation
+100044-4	FAIL	HIGH	# Suspicious Input Transformation - Template Evaluation
+100044-5	FAIL	HIGH	# Suspicious Input Transformation - EL Evaluation
+100044-6	FAIL	HIGH	# Suspicious Input Transformation - Unicode Normalisation
+100044-7	FAIL	HIGH	# Suspicious Input Transformation - URL Decoding Error
+100044-8	FAIL	HIGH	# Suspicious Input Transformation - Unicode Byte Truncation
+100044-9	FAIL	HIGH	# Suspicious Input Transformation - Unicode Case Conversion
+100044-10	FAIL	HIGH	# Suspicious Input Transformation - Unicode Combining Diacritic
+110005	FAIL	HIGH	# Personally Identifiable Information via WebSocket
+
+# Medium risk → WARN only
+0	WARN	MEDIUM	# Directory Browsing
+3-1	WARN	MEDIUM	# Session ID in URL Rewrite
+3-2	WARN	MEDIUM	# Session ID in URL Rewrite
+3-3	WARN	MEDIUM	# Referer Exposes Session ID
+42	WARN	MEDIUM	# Source Code Disclosure - SVN
+10003	WARN	MEDIUM	# Vulnerable JS Library
+10020-1	WARN	MEDIUM	# Missing Anti-clickjacking Header
+10020-2	WARN	MEDIUM	# Multiple X-Frame-Options Header Entries
+10020-3	WARN	MEDIUM	# X-Frame-Options Defined via META (Non-compliant with Spec)
+10020-4	WARN	MEDIUM	# X-Frame-Options Setting Malformed
+10026	WARN	MEDIUM	# HTTP Parameter Override
+10032-1	WARN	MEDIUM	# Potential IP Addresses Found in the Viewstate
+10032-2	WARN	MEDIUM	# Emails Found in the Viewstate
+10033	WARN	MEDIUM	# Directory Browsing
+10038-1	WARN	MEDIUM	# Content Security Policy (CSP) Header Not Set
+10041	WARN	MEDIUM	# HTTP to HTTPS Insecure Transition in Form Post
+10042	WARN	MEDIUM	# HTTPS to HTTP Insecure Transition in Form Post
+10051	WARN	MEDIUM	# Relative Path Confusion
+10052	WARN	MEDIUM	# X-ChromeLogger-Data (XCOLD) Header Information Leak
+10053	WARN	MEDIUM	# Apache Range Header DoS (CVE-2011-3192)
+10055-4	WARN	MEDIUM	# CSP: Wildcard Directive
+10055-5	WARN	MEDIUM	# CSP: script-src unsafe-inline
+10055-6	WARN	MEDIUM	# CSP: style-src unsafe-inline
+10055-7	WARN	MEDIUM	# CSP: script-src unsafe-hashes
+10055-8	WARN	MEDIUM	# CSP: style-src unsafe-hashes
+10055-9	WARN	MEDIUM	# CSP: Malformed Policy (Non-ASCII)
+10055-10	WARN	MEDIUM	# CSP: script-src unsafe-eval
+10055-11	WARN	MEDIUM	# CSP: Meta Policy Invalid Directive
+10055-13	WARN	MEDIUM	# CSP: Failure to Define Directive with No Fallback
+10095	WARN	MEDIUM	# Backup File Disclosure
+10098	WARN	MEDIUM	# Cross-Domain Misconfiguration
+10099	WARN	MEDIUM	# Source Code Disclosure - PHP
+10105-1	WARN	MEDIUM	# Authentication Credentials Captured
+10105-2	WARN	MEDIUM	# Weak Authentication Method
+10106	WARN	MEDIUM	# HTTP Only Site
+10108	WARN	MEDIUM	# Reverse Tabnabbing
+10116	WARN	MEDIUM	# ZAP is Out of Date
+10202	WARN	MEDIUM	# Absence of Anti-CSRF Tokens
+20012	WARN	MEDIUM	# Anti-CSRF Tokens Check
+30001	WARN	MEDIUM	# Buffer Overflow
+30002	WARN	MEDIUM	# Format String Error
+30003	WARN	MEDIUM	# Integer Overflow Error
+40003	WARN	MEDIUM	# CRLF Injection
+40008	WARN	MEDIUM	# Parameter Tampering
+40025	WARN	MEDIUM	# Proxy Disclosure
+40028	WARN	MEDIUM	# ELMAH Information Leak
+40029	WARN	MEDIUM	# Trace.axd Information Leak
+40032	WARN	MEDIUM	# .htaccess Information Leak
+40034	WARN	MEDIUM	# .env Information Leak
+40035	WARN	MEDIUM	# Hidden File Found
+40036	WARN	MEDIUM	# JWT Scan Rule
+40038	WARN	MEDIUM	# Bypassing 403
+40039	WARN	MEDIUM	# Web Cache Deception
+40040-2	WARN	MEDIUM	# CORS Misconfiguration
+40041	WARN	MEDIUM	# File Upload
+40042	WARN	MEDIUM	# Spring Actuator Information Leak
+40044	WARN	MEDIUM	# Exponential Entity Expansion (Billion Laughs Attack)
+90001	WARN	MEDIUM	# Insecure JSF ViewState
+90002	WARN	MEDIUM	# Java Serialization Object
+90003	WARN	MEDIUM	# Sub Resource Integrity Attribute Missing
+90017	WARN	MEDIUM	# XSLT Injection
+90022	WARN	MEDIUM	# Application Error Disclosure
+90028	WARN	MEDIUM	# Insecure HTTP Method
+100013	WARN	MEDIUM	# Information Disclosure - Private IP Address
+100018	WARN	MEDIUM	# Relative Path Overwrite
+100035	WARN	MEDIUM	# Information Disclosure - Java Stack Trace
+110001	WARN	MEDIUM	# Application Error Disclosure via WebSockets
+120002-1	WARN	MEDIUM	# Information Disclosure - JWT in Browser localStorage
+
+# Low / Info → OFF to reduce noise
+2	OFF	LOW	# Private IP Disclosure
+10009	OFF	LOW	# In Page Banner Information Leak
+10010	OFF	LOW	# Cookie No HttpOnly Flag
+10011	OFF	LOW	# Cookie Without Secure Flag
+10017	OFF	LOW	# Cross-Domain JavaScript Source File Inclusion
+10021	OFF	LOW	# X-Content-Type-Options Header Missing
+10023	OFF	LOW	# Information Disclosure - Debug Error Messages
+10032-3	OFF	LOW	# Old Asp.Net Version in Use
+10035-1	OFF	LOW	# Strict-Transport-Security Header Not Set
+10035-2	OFF	LOW	# Strict-Transport-Security Disabled
+10035-3	OFF	LOW	# Strict-Transport-Security Multiple Header Entries (Non-compliant with Spec)
+10035-5	OFF	LOW	# Strict-Transport-Security Missing Max-Age (Non-compliant with Spec)
+10035-6	OFF	LOW	# Strict-Transport-Security Defined via META (Non-compliant with Spec)
+10035-7	OFF	LOW	# Strict-Transport-Security Max-Age Malformed (Non-compliant with Spec)
+10035-8	OFF	LOW	# Strict-Transport-Security Malformed Content (Non-compliant with Spec)
+10036-2	OFF	LOW	# Server Leaks Version Information via &#34;Server&#34; HTTP Response Header Field
+10037	OFF	LOW	# Server Leaks Information via &#34;X-Powered-By&#34; HTTP Response Header Field(s)
+10039	OFF	LOW	# X-Backend-Server Header Information Leak
+10040	OFF	LOW	# Secure Pages Include Mixed Content
+10044-1	OFF	LOW	# Big Redirect Detected (Potential Sensitive Information Leak)
+10044-2	OFF	LOW	# Multiple HREFs Redirect Detected (Potential Sensitive Information Leak)
+10047	OFF	LOW	# HTTPS Content Available via HTTP
+10054-1	OFF	LOW	# Cookie without SameSite Attribute
+10054-2	OFF	LOW	# Cookie with SameSite Attribute None
+10054-3	OFF	LOW	# Cookie with Invalid SameSite Attribute
+10055-1	OFF	LOW	# CSP: X-Content-Security-Policy
+10055-2	OFF	LOW	# CSP: X-WebKit-CSP
+10055-3	OFF	LOW	# CSP: Notices
+10056	OFF	LOW	# X-Debug-Token Information Leak
+10061	OFF	LOW	# X-AspNet-Version Response Header
+10063-1	OFF	LOW	# Permissions Policy Header Not Set
+10063-2	OFF	LOW	# Deprecated Feature Policy Header Set
+10096	OFF	LOW	# Timestamp Disclosure - Unix
+10097	OFF	LOW	# Hash Disclosure - MD4 / MD5
+10110	OFF	LOW	# Dangerous JS Functions
+90004-1	OFF	LOW	# Insufficient Site Isolation Against Spectre Vulnerability
+90004-2	OFF	LOW	# Insufficient Site Isolation Against Spectre Vulnerability
+90004-3	OFF	LOW	# Insufficient Site Isolation Against Spectre Vulnerability
+100003	OFF	LOW	# Cookie Set Without HttpOnly Flag
+100009	OFF	LOW	# Information Disclosure - Email Addresses
+100010	OFF	LOW	# Information Disclosure - Hash
+100012	OFF	LOW	# Information Disclosure - IBAN Numbers
+100016	OFF	LOW	# Missing Security Headers
+100019	OFF	LOW	# Information Disclosure - Server Header
+100023	OFF	LOW	# Information Disclosure - X-Powered-By Header
+100030	OFF	LOW	# Backup File Detected
+100036	OFF	LOW	# Information Disclosure - Amazon S3 Bucket URL
+110003	OFF	LOW	# Information Disclosure - Debug Error Messages via WebSocket
+110006	OFF	LOW	# Private IP Disclosure via WebSocket
+110009	OFF	LOW	# Full Path Disclosure
+120001-1	OFF	LOW	# Information Disclosure - Sensitive Information in Browser localStorage
+120001-2	OFF	LOW	# Information Disclosure - Sensitive Information in Browser sessionStorage
+10004	OFF	INFO	# Tech Detection Passive Scanner
+10015	OFF	INFO	# Re-examine Cache-control Directives
+10019-1	OFF	INFO	# Content-Type Header Missing
+10019-2	OFF	INFO	# Content-Type Header Empty
+10024	OFF	INFO	# Information Disclosure - Sensitive Information in URL
+10025	OFF	INFO	# Information Disclosure - Sensitive Information in HTTP Referrer Header
+10027	OFF	INFO	# Information Disclosure - Suspicious Comments
+10029	OFF	INFO	# Cookie Poisoning
+10030	OFF	INFO	# User Controllable Charset
+10031	OFF	INFO	# User Controllable HTML Element Attribute (Potential XSS)
+10032-6	OFF	INFO	# Split Viewstate in Use
+10035-4	OFF	INFO	# Strict-Transport-Security Header on Plain HTTP Response
+10036-1	OFF	INFO	# Server Leaks its Webserver Application via &#34;Server&#34; HTTP Response Header Field
+10038-2	OFF	INFO	# Obsolete Content Security Policy (CSP) Header Found
+10038-3	OFF	INFO	# Content Security Policy (CSP) Report-Only Header Found
+10043	OFF	INFO	# User Controllable JavaScript Event (XSS)
+10049-1	OFF	INFO	# Non-Storable Content
+10049-2	OFF	INFO	# Storable but Non-Cacheable Content
+10049-3	OFF	INFO	# Storable and Cacheable Content
+10050-1	OFF	INFO	# Retrieved from Cache
+10050-2	OFF	INFO	# Retrieved from Cache
+10055-12	OFF	INFO	# CSP: Header &amp; Meta
+10057	OFF	INFO	# Username Hash Found
+10058	OFF	INFO	# GET for POST
+10094-1	OFF	INFO	# ASP.NET ViewState Disclosure
+10094-3	OFF	INFO	# Base64 Disclosure
+10103	OFF	INFO	# Image Exposes Location or Privacy Data
+10104	OFF	INFO	# User Agent Fuzzer
+10109	OFF	INFO	# Modern Web Application
+10111	OFF	INFO	# Authentication Request Identified
+10112	OFF	INFO	# Session Management Response Identified
+10113	OFF	INFO	# Verification Request Identified
+20014	OFF	INFO	# HTTP Parameter Pollution
+40016	OFF	INFO	# Cross Site Scripting (Persistent) - Prime
+40017	OFF	INFO	# Cross Site Scripting (Persistent) - Spider
+40023	OFF	INFO	# Possible Username Enumeration
+40040-1	OFF	INFO	# CORS Header
+40100	OFF	INFO	# Client-Side Data Flow
+50007-1	OFF	INFO	# GraphQL Endpoint Supports Introspection
+50007-2	OFF	INFO	# GraphQL Server Implementation Identified
+90005-1	OFF	INFO	# Sec-Fetch-Site Header is Missing
+90005-2	OFF	INFO	# Sec-Fetch-Mode Header is Missing
+90005-3	OFF	INFO	# Sec-Fetch-Dest Header is Missing
+90005-4	OFF	INFO	# Sec-Fetch-User Header is Missing
+90005-5	OFF	INFO	# Sec-Fetch-Site Header Has an Invalid Value
+90005-6	OFF	INFO	# Sec-Fetch-Mode Header Has an Invalid Value
+90005-7	OFF	INFO	# Sec-Fetch-Dest Header Has an Invalid Value
+90005-8	OFF	INFO	# Sec-Fetch-User Header Has an Invalid Value
+90011-1	OFF	INFO	# Charset Mismatch (Header Versus Meta Content-Type Charset)
+90011-2	OFF	INFO	# Charset Mismatch (Header Versus Meta Charset)
+90011-3	OFF	INFO	# Charset Mismatch (Meta Charset Versus Meta Content-Type Charset)
+90011-4	OFF	INFO	# Charset Mismatch
+90027	OFF	INFO	# Cookie Slack Detector
+90033	OFF	INFO	# Loosely Scoped Cookie
+100002	OFF	INFO	# Server is running on Clacks - GNU Terry Pratchett
+100004	OFF	INFO	# Content Security Policy Violations Reporting Enabled
+100005	OFF	INFO	# SameSite Cookie Attribute Protection Used
+100006	OFF	INFO	# Information Disclosure - IP Exposed via F5 BIG-IP Persistence Cookie
+100007	OFF	INFO	# Information Disclosure - Base64-encoded String
+100011	OFF	INFO	# Information Disclosure - HTML Comments
+100014	OFF	INFO	# Reflected HTTP GET Parameter(s)
+100015	OFF	INFO	# HUNT Methodology
+100017	OFF	INFO	# Non Static Site Detected
+100022	OFF	INFO	# Upload Form Discovered
+100034	OFF	INFO	# Information Disclosure - Google API Key
+110002	OFF	INFO	# Base64 Disclosure in WebSocket message
+110004	OFF	INFO	# Email address found in WebSocket message
+110007	OFF	INFO	# Username Hash Found in WebSocket message
+110008	OFF	INFO	# Information Disclosure - Suspicious Comments in XML via WebSocket
+120000-1	OFF	INFO	# Information Disclosure - Information in Browser localStorage
+120000-2	OFF	INFO	# Information Disclosure - Information in Browser sessionStorage
+120002-2	OFF	INFO	# Information Disclosure - JWT in Browser sessionStorage
+
+# Unknown risk
+3	WARN	UNKNOWN	# Session ID in URL Rewrite
+6	WARN	UNKNOWN	# Path Traversal
+10016	WARN	UNKNOWN	# Web Browser XSS Protection Not Enabled
+10019	WARN	UNKNOWN	# Content-Type Header Missing
+10020	WARN	UNKNOWN	# Anti-clickjacking Header
+10032	WARN	UNKNOWN	# Viewstate
+10035	WARN	UNKNOWN	# Strict-Transport-Security Header
+10036	WARN	UNKNOWN	# HTTP Server Response Header
+10038	WARN	UNKNOWN	# Content Security Policy (CSP) Header Not Set
+10044	WARN	UNKNOWN	# Big Redirect Detected (Potential Sensitive Information Leak)
+10045	WARN	UNKNOWN	# Source Code Disclosure - /WEB-INF Folder
+10046	WARN	UNKNOWN	# Insecure Component
+10048	WARN	UNKNOWN	# Remote Code Execution - Shell Shock
+10049	WARN	UNKNOWN	# Content Cacheability
+10050	WARN	UNKNOWN	# Retrieved from Cache
+10054	WARN	UNKNOWN	# Cookie without SameSite Attribute
+10055	WARN	UNKNOWN	# CSP
+10063	WARN	UNKNOWN	# Permissions Policy Header Not Set
+10070	WARN	UNKNOWN	# Use of SAML
+10094	WARN	UNKNOWN	# Base64 Disclosure
+10105	WARN	UNKNOWN	# Weak Authentication Method
+10115	WARN	UNKNOWN	# Script Served From Malicious Domain (polyfill)
+20016	WARN	UNKNOWN	# Cross-Domain Misconfiguration
+20019	WARN	UNKNOWN	# External Redirect
+40040	WARN	UNKNOWN	# CORS Header
+40043	WARN	UNKNOWN	# Log4Shell
+50007	WARN	UNKNOWN	# ExtensionGraphQl
+90004	WARN	UNKNOWN	# Insufficient Site Isolation Against Spectre Vulnerability
+90005	WARN	UNKNOWN	# Fetch Metadata Request Headers
+90011	WARN	UNKNOWN	# Charset Mismatch
+90019	WARN	UNKNOWN	# Server Side Code Injection
+90030	WARN	UNKNOWN	# WSDL File Detection
+100044	WARN	UNKNOWN	# Suspicious Input Transformation
+120000	WARN	UNKNOWN	# Information Disclosure - Information in Browser Storage
+120001	WARN	UNKNOWN	# Information Disclosure - Sensitive Information in Browser Storage
+120002	WARN	UNKNOWN	# Information Disclosure - JWT in Browser Storage

@@ -2,7 +2,7 @@ name: "ZAP DAST Scan - Local Docker Juice Shop"
 
 on:
   push:
-    branches: [ "secops-zap" ]      # chỉnh theo branch chính của bạn
+    branches: [ "secops-zap" ]      
   pull_request:
     branches: [ "secops-zap" ]
 
@@ -42,6 +42,19 @@ jobs:
               -config connection.httpHeaders.header(0).name=Authorization
               -config "connection.httpHeaders.header(0).value=Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdGF0dXMiOiJzdWNjZXNzIiwiZGF0YSI6eyJpZCI6MjMsInVzZXJuYW1lIjoiIiwiZW1haWwiOiJ6YXB0ZXN0QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiYjE3ZTZlMGMyNGQ3YjczNjNmNWY4MTY2ZjJkYWZjMDgiLCJyb2xlIjoiY3VzdG9tZXIiLCJkZWx1eGVUb2tlbiI6IiIsImxhc3RMb2dpbklwIjoiIiwicHJvZmlsZUltYWdlIjoiL2Fzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdC5zdmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjUtMTItMTkgMDY6MzU6NTYuMTIyICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMjUtMTItMTkgMDY6MzY6NDYuMTI4ICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImlhdCI6MTc2NjEyNjMyNn0.qt17xVkgvNCybyl8UJmOID57UqYraVYzMHnbuFwbU74NaI19LAzjG163ArRWvWku0dUafB9z-_0bkqZ8se0Ov-NbtlinBq3DhxAzgBIoOB5mU94-8JFzEYUOJPHOpXLWSGL4hpVwIBfLsjwwAwqcwVXygseFyww4SY6WzxV0bBQ"
               "
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python deps
+        run: |
+          python -m pip install --upgrade pip
+
+      - name: Check ZAP results with rules.tsv
+        run: |
+          python check_zap_rules.py
+
 
       # 3. Upload report
       - name: Upload ZAP report
