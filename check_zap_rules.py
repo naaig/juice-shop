@@ -7,6 +7,16 @@ RULES_FILE = ROOT / ".zap" / "rules.tsv"
 # tuỳ tên file JSON thực tế ZAP tạo:
 REPORT_FILE = ROOT / "report_json.json"  # nếu khác bạn sửa lại
 
+print("DEBUG: using report file:", REPORT_FILE.resolve())
+
+if not REPORT_FILE.exists():
+    raise SystemExit(f"DEBUG ERROR: report file {REPORT_FILE} not found")
+
+data = json.loads(REPORT_FILE.read_text(encoding="utf-8"))
+
+print("DEBUG: sites:", [s.get('name') for s in data.get('site', [])])
+print("DEBUG: total alerts:", len(data.get('site', [])[0].get('alerts', [])) if data.get('site') else 0)
+
 def load_rules(path: Path):
     rules = {}
     with path.open(encoding="utf-8") as f:
