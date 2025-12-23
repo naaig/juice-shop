@@ -21,7 +21,11 @@ jobs:
           echo "Waiting for Juice Shop to be ready..."
           sleep 40
           docker ps
-
+      - name: Create dummy Markdown report for ZAP action
+        run: |
+          echo "# ZAP Scan Report (placeholder)" > report_md.md
+          echo "" >> report_md.md
+          echo "This is a placeholder Markdown file so the GitHub Action does not fail." >> report_md.md
       
       - name: ZAP Full Scan
         uses: zaproxy/action-full-scan@v0.13.0
