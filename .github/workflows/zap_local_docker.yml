@@ -2,9 +2,9 @@ name: "ZAP DAST Scan - Local Docker Juice Shop"
 
 on:
   push:
-    branches: [ "secops-zap" ]      
+    branches: [ "master" ]      
   pull_request:
-    branches: [ "secops-zap" ]
+    branches: [ "master" ]
 
 jobs:
   zap_scan:
