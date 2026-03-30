@@ -1,6 +1,9 @@
 name: "ZAP Baseline Scan"
 
 on:
+  push:
+    branches: [ secops-zap ]
+  workflow_dispatch:
   schedule:
     - cron:  '0 18 * * 6'
 
