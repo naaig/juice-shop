@@ -1,4 +1,4 @@
-name: "ZAP DAST Scan - Local Docker Juice Shop"
+name: "ZAP DAST Scan"
 
 on:
   push:
@@ -46,6 +46,32 @@ jobs:
               -config connection.httpHeaders.header(0).name=Authorization
               -config "connection.httpHeaders.header(0).value=Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdGF0dXMiOiJzdWNjZXNzIiwiZGF0YSI6eyJpZCI6MjMsInVzZXJuYW1lIjoiIiwiZW1haWwiOiJ6YXB0ZXN0QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiYjE3ZTZlMGMyNGQ3YjczNjNmNWY4MTY2ZjJkYWZjMDgiLCJyb2xlIjoiY3VzdG9tZXIiLCJkZWx1eGVUb2tlbiI6IiIsImxhc3RMb2dpbklwIjoiIiwicHJvZmlsZUltYWdlIjoiL2Fzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdC5zdmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjUtMTItMTkgMDY6MzU6NTYuMTIyICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMjUtMTItMTkgMDY6MzY6NDYuMTI4ICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImlhdCI6MTc2NjEyNjMyNn0.qt17xVkgvNCybyl8UJmOID57UqYraVYzMHnbuFwbU74NaI19LAzjG163ArRWvWku0dUafB9z-_0bkqZ8se0Ov-NbtlinBq3DhxAzgBIoOB5mU94-8JFzEYUOJPHOpXLWSGL4hpVwIBfLsjwwAwqcwVXygseFyww4SY6WzxV0bBQ"
               "
+
+      - name: Install nuclei
+        run: |
+          curl -s https://api.github.com/repos/projectdiscovery/nuclei/releases/latest \
+            | grep browser_download_url \
+            | grep linux_amd64.zip \
+            | cut -d '"' -f 4 \
+            | wget -qi -
+          unzip -o nuclei_*_linux_amd64.zip nuclei
+          sudo mv nuclei /usr/local/bin/nuclei
+          nuclei -version
+
+      - name: Update templates
+        run: nuclei -ut
+
+      - name: Run nuclei (scan URL)
+        env:
+          TARGET_URL: 'http://localhost:3000'
+        run: |
+          nuclei -u "$TARGET_URL" \
+            -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJzdGF0dXMiOiJzdWNjZXNzIiwiZGF0YSI6eyJpZCI6MjMsInVzZXJuYW1lIjoiIiwiZW1haWwiOiJ6YXB0ZXN0QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiYjE3ZTZlMGMyNGQ3YjczNjNmNWY4MTY2ZjJkYWZjMDgiLCJyb2xlIjoiY3VzdG9tZXIiLCJkZWx1eGVUb2tlbiI6IiIsImxhc3RMb2dpbklwIjoiIiwicHJvZmlsZUltYWdlIjoiL2Fzc2V0cy9wdWJsaWMvaW1hZ2VzL3VwbG9hZHMvZGVmYXVsdC5zdmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMjUtMTItMTkgMDY6MzU6NTYuMTIyICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMjUtMTItMTkgMDY6MzY6NDYuMTI4ICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImlhdCI6MTc2NjEyNjMyNn0.qt17xVkgvNCybyl8UJmOID57UqYraVYzMHnbuFwbU74NaI19LAzjG163ArRWvWku0dUafB9z-_0bkqZ8se0Ov-NbtlinBq3DhxAzgBIoOB5mU94-8JFzEYUOJPHOpXLWSGL4hpVwIBfLsjwwAwqcwVXygseFyww4SY6WzxV0bBQ" \
+            -severity medium,high,critical \
+            -rate-limit 10 -timeout 10 \
+            -retries 1 \
+            -jsonl -o nuclei.jsonl
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
